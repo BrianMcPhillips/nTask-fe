@@ -47,7 +47,7 @@ export default class SignIn extends Component {
           switchState === 'Off' && 
             <div>
               <h1>Please Login</h1>
-              <form>
+              <form onSubmit={this.handleSignIn}>
                 <div>
                   <input onChange={this.handleEmail} type="text" required/>
                   <label>Email</label>
@@ -69,7 +69,7 @@ export default class SignIn extends Component {
             <div>
               <h1>Sign Up</h1>
               <form>
-                <div>
+                <div onSubmit={this.handleSignUp}>
                   <input onChange={this.handleEmail} type="text" required/>
                   <label>Email</label>
                 </div>
@@ -85,7 +85,6 @@ export default class SignIn extends Component {
               </form>
             </div>
         }
-        
       </div>
     )
   }
