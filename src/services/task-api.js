@@ -1,12 +1,44 @@
 import request from 'superagent';
 
-const { URL } = process.env.REACT_APP_URL;
+const URL = process.env.REACT_APP_URL;
 
 export const fetchTasks = token => {
   try {
   request.get(`${URL}/api/tasks`).set('Authorization', token);
   } catch(e) {
     throw e 
+  }
+}
+
+export const fetchTaskById = (id, token) => {
+  try {
+    request.get(`${URL}/api/tasks/${id}`).set('Authorization', token);
+  } catch(e) {
+    throw e 
+  }
+}
+
+export const createTask = (taskInfo, token) => {
+  try {
+    request.post(`${URL}/api/tasks`).set('Authorization', token).send(taskInfo);
+  } catch(e) {
+    throw e 
+  }
+}
+
+export const updateTask = (id, taskInfo, token) => {
+  try {
+    request.put(`${URL}/api/tasks/${id}`).set('Authorization', token).send(taskInfo);
+  } catch(e) {
+    throw e 
+  }
+}
+
+export const deleteTask = (id, token) => {
+  try {
+    request.delete(`${URL}/api/tasks/${id}`).set('Authorization', token);
+  } catch(e) {
+    throw e
   }
 }
 
