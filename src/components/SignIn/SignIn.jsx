@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { signIn, signUp } from '../../services/task-api';
 
 export default class SignIn extends Component {
   state = {
@@ -18,6 +19,13 @@ export default class SignIn extends Component {
   }
   handlePassword = e => {
     this.setState({ password: e.target.value })
+  }
+  handleSignIn = async(e) => {
+    e.preventDefault();
+    const data = await signIn({
+      email: this.state.email,
+      password: this.state.password
+    });
   }
 
   render() {
