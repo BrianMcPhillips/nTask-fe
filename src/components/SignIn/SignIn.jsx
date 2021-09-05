@@ -26,6 +26,17 @@ export default class SignIn extends Component {
       email: this.state.email,
       password: this.state.password
     });
+    localStorage.setItem('token', data.body.token);
+    this.props.history.push('/list');
+  }
+  handleSignUp = async(e) => {
+    e.preventDefault();
+    const data = await signUp({
+      email: this.state.email,
+      password: this.state.password
+    });
+    localStorage.setItem('token', data.body.token);
+    this.props.history.push('/list');
   }
 
   render() {
@@ -38,11 +49,11 @@ export default class SignIn extends Component {
               <h1>Please Login</h1>
               <form>
                 <div>
-                  <input type="text" required/>
+                  <input onChange={this.handleEmail} type="text" required/>
                   <label>Email</label>
                 </div>
                 <div>
-                  <input type="password" required/>
+                  <input onChange={this.handlePassword} type="password" required/>
                   <label>Password</label>
                 </div>
                 <button>Login</button>
@@ -59,17 +70,17 @@ export default class SignIn extends Component {
               <h1>Sign Up</h1>
               <form>
                 <div>
-                  <input type="text" required/>
+                  <input onChange={this.handleEmail} type="text" required/>
                   <label>Email</label>
                 </div>
                 <div>
-                  <input type="password" required/>
+                  <input onChange={this.handlePassword} type="password" required/>
                   <label>Password</label>
                 </div>
                 <button>Sign Up</button>
                 <p>
-                  Don't have an account?
-                  <button>Sign Up</button>
+                  Already have an account?
+                  <button>Login</button>
                 </p>
               </form>
             </div>
