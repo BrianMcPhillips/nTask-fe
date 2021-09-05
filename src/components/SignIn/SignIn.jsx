@@ -49,19 +49,20 @@ export default class SignIn extends Component {
               <h1>Please Login</h1>
               <form onSubmit={this.handleSignIn}>
                 <div>
-                  <input onChange={this.handleEmail} type="text" required/>
+                  <input onChange={this.handleEmail} type="text" />
                   <label>Email</label>
                 </div>
                 <div>
-                  <input onChange={this.handlePassword} type="password" required/>
+                  <input onChange={this.handlePassword} type="password" />
                   <label>Password</label>
                 </div>
                 <button>Login</button>
+                </form>
                 <p>
                   Don't have an account?
-                  <button>Sign Up</button>
+                  <button onClick={this.handleSwitchOn}>Sign Up</button>
                 </p>
-              </form>
+
             </div>
         }
         {
@@ -70,19 +71,19 @@ export default class SignIn extends Component {
               <h1>Sign Up</h1>
               <form>
                 <div onSubmit={this.handleSignUp}>
-                  <input onChange={this.handleEmail} type="text" required/>
+                  <input onChange={this.handleEmail} type="text" />
                   <label>Email</label>
                 </div>
                 <div>
-                  <input onChange={this.handlePassword} type="password" required/>
+                  <input onChange={this.handlePassword} type="password" />
                   <label>Password</label>
                 </div>
                 <button>Sign Up</button>
+                </form>
                 <p>
                   Already have an account?
-                  <button>Login</button>
+                  <button onClick={this.handleSwitchOff}>Login</button>
                 </p>
-              </form>
             </div>
         }
       </div>

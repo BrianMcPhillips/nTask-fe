@@ -1,6 +1,6 @@
 import request from 'superagent';
 
-const { URL } = process.env.REACT_APP_URL;
+const URL = process.env.REACT_APP_URL;
 
 export const fetchTasks = token => {
   try {
