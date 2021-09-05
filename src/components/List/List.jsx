@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { fetchTasks } from '../../services/task-api';
 
 
 export default class List extends Component {
@@ -6,8 +7,9 @@ export default class List extends Component {
     taskData: []
   }
   componentDidMount = () => {
-
+    const data = fetchTasks()
   }
+  
   render() {
     return (
       <div>
