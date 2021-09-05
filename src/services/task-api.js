@@ -26,6 +26,22 @@ export const createTask = (taskInfo, token) => {
   }
 }
 
+export const updateTask = (id, taskInfo, token) => {
+  try {
+    request.put(`${URL}/api/tasks/${id}`).set('Authorization', token).send(taskInfo);
+  } catch(e) {
+    throw e 
+  }
+}
+
+export const deleteTask = (id, token) => {
+  try {
+    request.delete(`${URL}/api/tasks/${id}`).set('Authorization', token);
+  } catch(e) {
+    throw e
+  }
+}
+
 export const signIn = (userInfo) => {
   try {
     request.post(`${URL}/auth/signin`).send(userInfo);
