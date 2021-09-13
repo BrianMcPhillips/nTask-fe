@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { createTask} from '../../services/task-api';
+import { createTask } from '../../services/task-api';
 import Form from '../Form/Form';
 
 export default class Create extends Component {
@@ -10,11 +10,10 @@ export default class Create extends Component {
 
   handleSubmit = async(e) => {
     e.preventDefault();
-    const token = localStorage.getItem('token');
     await createTask({
       todo: this.state.todo,
       completed: this.state.completed
-    }, token);
+    });
     this.props.history.push('/list');
   }
 

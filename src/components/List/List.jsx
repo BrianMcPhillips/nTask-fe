@@ -8,8 +8,7 @@ export default class List extends Component {
     taskData: []
   }
   componentDidMount = () => {
-    const token = localStorage.getItem('token');
-    const data = fetchTasks(token);
+    const data = fetchTasks();
     this.setState({ taskData: data.body });
   }
 
