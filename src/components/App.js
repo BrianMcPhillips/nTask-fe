@@ -6,12 +6,15 @@ import {
 } from 'react-router-dom';
 import SignIn from './SignIn/SignIn';
 import List from './List/List';
+import Header from './Header/Header';
+import Create from './Create/Create';
 
 export default class App extends Component {
   render() {
     return (
       <div>
         <Router>
+          <Header /> 
           <Switch>
             <Route
               path='/'
@@ -22,6 +25,11 @@ export default class App extends Component {
               path='/list'
               exact
               render={(routerProps) => <List {...routerProps}/>}
+            />
+            <Route
+              path='/create'
+              exact
+              render={(routerProps) => <Create {...routerProps}/>}
             />
           </Switch>
         </Router>

@@ -2,59 +2,63 @@ import request from 'superagent';
 
 const URL = process.env.REACT_APP_URL;
 
-export const fetchTasks = token => {
+
+export const fetchTasks = () => {
+  const token = localStorage.getItem('token');
   try {
-  request.get(`${URL}/api/tasks`).set('Authorization', token);
+    return request.get(`${URL}/api/tasks`).set('Authorization', token);
   } catch(e) {
     throw e 
   }
 }
 
-export const fetchTaskById = (id, token) => {
+export const fetchTaskById = id => {
+  const token = localStorage.getItem('token');
   try {
-    request.get(`${URL}/api/tasks/${id}`).set('Authorization', token);
+    return request.get(`${URL}/api/tasks/${id}`).set('Authorization', token);
   } catch(e) {
     throw e 
   }
 }
 
-export const createTask = (taskInfo, token) => {
+export const createTask = taskInfo => {
+  const token = localStorage.getItem('token');
   try {
-    request.post(`${URL}/api/tasks`).set('Authorization', token).send(taskInfo);
+    return request.post(`${URL}/api/tasks`).set('Authorization', token).send(taskInfo);
   } catch(e) {
     throw e 
   }
 }
 
-export const updateTask = (id, taskInfo, token) => {
+export const updateTask = (id, taskInfo) => {
+  const token = localStorage.getItem('token');
   try {
-    request.put(`${URL}/api/tasks/${id}`).set('Authorization', token).send(taskInfo);
+    return request.put(`${URL}/api/tasks/${id}`).set('Authorization', token).send(taskInfo);
   } catch(e) {
     throw e 
   }
 }
 
-export const deleteTask = (id, token) => {
+export const deleteTask = id => {
+  const token = localStorage.getItem('token');
   try {
-    request.delete(`${URL}/api/tasks/${id}`).set('Authorization', token);
+    return request.delete(`${URL}/api/tasks/${id}`).set('Authorization', token);
   } catch(e) {
     throw e
   }
 }
 
-export const signIn = (userInfo) => {
+export const signIn = userInfo => {
   try {
-    request.post(`${URL}/auth/signin`).send(userInfo);
-
+    return request.post(`${URL}/auth/signin`).send(userInfo);
   } catch(e) {
     throw e
   }
 }
 
-export const signUp = (userInfo) => {
+export const signUp = userInfo => {
   try {
-    request.post(`${URL}/auth/signup`).send(userInfo);
-
+    return request.post(`${URL}/auth/signup`).send(userInfo);
   } catch(e) {
     throw e
   }

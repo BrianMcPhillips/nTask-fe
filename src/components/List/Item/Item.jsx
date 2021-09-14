@@ -11,7 +11,7 @@ export default class Item extends Component {
     return (
       <div>
         <h1>{todo}</h1>
-        <h3>{completed}</h3>
+        <h3>Completed: {completed ? 'Yes' : 'No'}</h3>
       </div>
     )
   }

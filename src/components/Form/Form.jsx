@@ -14,7 +14,7 @@ export default class Form extends Component {
         <form onSubmit={handleSubmit}>
           <label>
             <p>Task</p>
-            <input onChange={handleTodo} type="text" required defaultValue={todo}/>
+            <input onChange={handleTodo} type="text" defaultValue={todo}/>
           </label>
           <label>
             <p>Completed</p>
