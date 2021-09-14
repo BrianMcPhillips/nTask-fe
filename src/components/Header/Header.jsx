@@ -8,7 +8,7 @@ export default class Header extends Component {
       <div className={styles.header}>
         <h1>Task List!</h1>
         <div className={styles.links}>
-          <Link to="/">Home</Link>
+          <Link to="/list">Home</Link>
           <Link to="/create">Create</Link>
         </div>
       </div>

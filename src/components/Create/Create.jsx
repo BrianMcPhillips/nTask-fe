@@ -34,8 +34,8 @@ export default class Create extends Component {
         <Form 
           todo={todo}
           completed={completed}
-          handleTodo={this.handleTodo}
-          handleCompleted={this.handleCompleted}
+          handleTodo={this.handleTodoChange}
+          handleCompleted={this.handleCompletedChange}
           handleSubmit={this.handleSubmit}
         />
       </div>
