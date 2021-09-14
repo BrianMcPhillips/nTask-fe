@@ -14,10 +14,10 @@ export default class SignIn extends Component {
   handleSwitchOff = () => {
     this.setState({ switchState: 'Off' })
   }
-  handleEmail = e => {
+  handleEmail = (e) => {
     this.setState({ email: e.target.value })
   }
-  handlePassword = e => {
+  handlePassword = (e) => {
     this.setState({ password: e.target.value })
   }
   handleSignIn = async(e) => {
@@ -69,8 +69,8 @@ export default class SignIn extends Component {
           switchState === 'On' && 
             <div>
               <h1>Sign Up</h1>
-              <form>
-                <div onSubmit={this.handleSignUp}>
+              <form onSubmit={this.handleSignUp}>
+                <div>
                   <input onChange={this.handleEmail} type="text" />
                   <label>Email</label>
                 </div>

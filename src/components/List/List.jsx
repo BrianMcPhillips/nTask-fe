@@ -7,8 +7,8 @@ export default class List extends Component {
   state = {
     taskData: []
   }
-  componentDidMount = () => {
-    const data = fetchTasks();
+  componentDidMount = async() => {
+    const data = await fetchTasks();
     this.setState({ taskData: data.body });
   }
 
@@ -19,7 +19,7 @@ export default class List extends Component {
     return (
       <div>
         {
-          taskData === null && 
+          taskData.length === 0 && 
             <div>
               <h1>
                 Please create a task to see your list
@@ -27,7 +27,7 @@ export default class List extends Component {
             </div>
         }
         {
-          taskData !== null && taskData.map((task, i) => <Item key={task.todo + i} data={task}/>)
+          taskData.length > 0 && taskData.map((task, i) => <Item key={task.todo + i} data={task}/>)
         }
       </div>
     )
