@@ -9,11 +9,19 @@ import List from './List/List';
 import Header from './Header/Header';
 
 export default class App extends Component {
+  state = {
+    token: ''
+  }
+  handleSignOut = () => {
+    localStorage.removeItem('token');
+    this.setState({ token: '' });
+  }
+
   render() {
     return (
       <div>
         <Router>
-          <Header /> 
+          <Header signOut={this.handleSignOut}/> 
           <Switch>
             <Route
               path='/'
