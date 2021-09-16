@@ -8,6 +8,13 @@ export default class SignIn extends Component {
     password: ''
   }
 
+  // componentDidMount = () => {
+  //   const token = localStorage.getItem('token');
+  //   if(token) {
+  //     this.props.history.push('/list')
+  //   }
+  // }
+
   handleSwitchOn = () => {
     this.setState({ switchState: 'On' })
   }
@@ -27,6 +34,7 @@ export default class SignIn extends Component {
       password: this.state.password
     });
     localStorage.setItem('token', data.body.token);
+    this.props.handleToken();
     this.props.history.push('/list');
   }
   handleSignUp = async(e) => {
@@ -36,6 +44,7 @@ export default class SignIn extends Component {
       password: this.state.password
     });
     localStorage.setItem('token', data.body.token);
+    this.props.handleToken();
     this.props.history.push('/list');
   }
 

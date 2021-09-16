@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { fetchTasks, createTask } from '../../services/task-api';
+import { fetchTasks, createTask, updateTask, deleteTask } from '../../services/task-api';
 import Item from './Item/Item';
 import Create from '../Create/Create';
+import styles from './List.module.css';
 
 
 export default class List extends Component {
@@ -10,9 +11,14 @@ export default class List extends Component {
     todo: '',
     completed: false
   }
+
   componentDidMount = async() => {
-    const data = await fetchTasks();
-    this.setState({ taskData: data.body });
+    if(this.props.token) {
+      const data = await fetchTasks();
+      this.setState({ taskData: data.body });
+    } else {
+      this.props.history.push('/');
+    }
   }
 
   handleSubmit = async(e) => {
@@ -29,8 +35,18 @@ export default class List extends Component {
   handleTodoChange = (e) => {
     this.setState({ todo: e.target.value })
   }
-  handleCompletedChange = (e) => {
-    this.setState({ completed: e.target.value })
+
+
+  handleUpdate = async(id, taskinfo) => {
+    await updateTask(id, taskinfo);
+    const data = await fetchTasks();
+    this.setState({ taskData: data.body });
+  }
+
+  handleDelete = async(id) => {
+    await deleteTask(id);
+    const data = await fetchTasks();
+    this.setState({ taskData: data.body });
   }
 
   render() {
@@ -40,7 +56,7 @@ export default class List extends Component {
       completed
     } = this.state;
     return (
-      <div>
+      <div className={styles.container}>
         <Create 
           todo={todo}
           completed={completed}
@@ -58,7 +74,14 @@ export default class List extends Component {
               </div>
           }
           {
-            taskData.length > 0 && taskData.map((task, i) => <Item key={task.todo + i} data={task}/>)
+            taskData.length > 0 && taskData.map((task, i) => 
+              <Item 
+                key={task.todo + i} 
+                data={task} 
+                handleUpdate={this.handleUpdate}
+                handleDelete={this.handleDelete}
+              />
+            )
           }
         </div>
 

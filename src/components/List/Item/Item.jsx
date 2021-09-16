@@ -5,13 +5,28 @@ export default class Item extends Component {
     const {
       data: {
         todo,
-        completed
-      }
+        completed,
+        id
+      },
+      handleUpdate,
+      handleDelete
     } = this.props;
     return (
       <div>
         <h1>{todo}</h1>
         <h3>Completed: {completed ? 'Yes' : 'No'}</h3>
+        <div>
+          <button onClick={() => {
+            handleUpdate(id, {todo: todo, completed: true});
+          }}>
+            Complete
+          </button>
+          <button onClick={() => {
+            handleDelete(id);
+          }}>
+            Delete
+          </button>
+        </div>
       </div>
     )
   }
